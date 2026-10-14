@@ -2,7 +2,7 @@ import Image from "next/image";
 import DownloadLink from "./download-link";
 import DownloadSelector from "./download-selector";
 
-const PLUGIN_REPO = "Inside-Success/istv-reels-tool-landingpage";
+const PLUGIN_REPO = "Inside-Success/istv-reels-tool-plugin";
 const CUTSHEET_REPO = "Inside-Success/istv-documentary-cutsheet-downloads";
 // Empty follows the latest published release. Set CUTSHEET_RELEASE_TAG in the
 // environment only to stage a specific tag; GitHub's latest skips prereleases.

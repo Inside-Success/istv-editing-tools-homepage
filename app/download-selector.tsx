@@ -7,7 +7,7 @@ type Platform = "windows" | "mac";
 type CutSheetRelease = { version: string; url: string } | null;
 
 const DESKTOP_REPO = "Inside-Success/istv-reel-editor-desktop";
-const PLUGIN_REPO = "Inside-Success/istv-reels-tool-landingpage";
+const PLUGIN_REPO = "Inside-Success/istv-reels-tool-plugin";
 const d = (repo: string, f: string) => `https://github.com/${repo}/releases/latest/download/${f}`;
 
 const files = {
@@ -89,7 +89,7 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
         <ol className="dl-notes steps">
           <li>Unzip, then run <code>install.bat</code> on Windows or <code>install.command</code> on Mac.</li>
           <li>Restart Premiere and open Window, Extensions, ISTV Reel Tool.</li>
-          <li>Enter the access token from your admin. This panel does not update itself.</li>
+          <li>Enter the access token from your admin. From v1.2.4 onward, use Check updates in the panel for future releases.</li>
         </ol>
       </article>
 
