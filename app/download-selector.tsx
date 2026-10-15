@@ -125,7 +125,7 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
         <ol className="dl-notes steps">
           <li>Download and open the <code>.ccx</code> file in Creative Cloud Desktop.</li>
           <li>Restart Premiere and open Window, UXP Plugins, ISTV Podcast Editor.</li>
-          <li>Enter the team token from your admin under Settings, Transcription. Future updates install from the panel.</li>
+          <li>Enter the team token from your admin when the panel opens, or continue with Premiere transcription. Future updates install from the panel.</li>
         </ol>
       </article>
     </div>

@@ -94,7 +94,7 @@ const tools = [
   {
     id: "podcast", icon: "podcast", name: "Podcast Editor", runs: "Premiere Pro 25.6+",
     body: "Turn a synced, two-camera podcast into a speaker-led edit, trailer and episode description.",
-    points: ["Switches cameras by speaker", "Keeps every cut editable", "Updates from inside the panel"],
+    points: ["Switches cameras by speaker", "Team token setup on first launch", "Updates from inside the panel"],
     cta: "Get Podcast Editor",
   },
 ] as const;
