@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-export type Product = "desktop" | "premiere" | "cutsheet";
+export type Product = "desktop" | "premiere" | "cutsheet" | "podcast";
 
 export const PICK_EVENT = "istv:pick-product";
 

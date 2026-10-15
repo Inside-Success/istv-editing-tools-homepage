@@ -66,6 +66,7 @@ function Icon({ name }: { name: string }) {
       {name === "reel" && <><rect x="7" y="2.5" width="10" height="19" rx="2.5" {...p} /><path d="M10.5 9.5v5l4-2.5-4-2.5Z" {...p} /></>}
       {name === "desk" && <><rect x="2.5" y="4" width="19" height="12.5" rx="2" {...p} /><path d="M8 20.5h8M12 16.5v4" {...p} /></>}
       {name === "doc" && <><rect x="3" y="5" width="18" height="14" rx="2" {...p} /><path d="M3 9h18M7 5v4m5-4v4m5-4v4" {...p} /></>}
+      {name === "podcast" && <><circle cx="8" cy="9" r="3" {...p} /><circle cx="16" cy="9" r="3" {...p} /><path d="M3 20v-2a5 5 0 0 1 10 0v2m-1 0v-2a5 5 0 0 1 9 0v2" {...p} /></>}
       {name === "spark" && <path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7Z" {...p} />}
     </svg>
   );
@@ -89,6 +90,12 @@ const tools = [
     body: "Import the documentary team's XLSX, line it up with synced footage, and build a multicam assembly with ElevenLabs voice-over in story order.",
     points: ["Long-form documentary edits", "Keeps every camera angle", "Updates from inside the panel"],
     cta: "Get Cut Sheet",
+  },
+  {
+    id: "podcast", icon: "podcast", name: "Podcast Editor", runs: "Premiere Pro 25.6+",
+    body: "Turn a synced, two-camera podcast into a speaker-led edit, trailer and episode description.",
+    points: ["Switches cameras by speaker", "Keeps every cut editable", "Updates from inside the panel"],
+    cta: "Get Podcast Editor",
   },
 ] as const;
 
@@ -117,7 +124,7 @@ export default async function Home() {
             Find the story,<br />build the edit.
           </h1>
           <p className="hero-description load" style={{ ["--d" as string]: "100ms" }}>
-            Three focused tools for post-production. Find reel moments, cut vertical edits, or turn a documentary cut sheet into a Premiere Pro assembly.
+            Four focused tools for post-production. Find reel moments, cut vertical edits, assemble documentaries, or shape a podcast episode.
           </p>
           <div className="hero-actions load" style={{ ["--d" as string]: "200ms" }}>
             <a className="btn-dark" href="#download"><span className="btn-icon"><Icon name="spark" /></span>Download a tool</a>
@@ -166,7 +173,7 @@ export default async function Home() {
 
       <section className="tools" id="tools" aria-labelledby="tools-heading">
         <div className="section-head">
-          <h2 id="tools-heading">One toolkit, three clear jobs</h2>
+          <h2 id="tools-heading">One toolkit, four clear jobs</h2>
           <p>Choose by the edit you are making today. Each tool installs on its own.</p>
         </div>
         <div className="tool-grid">
@@ -211,6 +218,7 @@ export default async function Home() {
             <p>Desktop: macOS &amp; Windows</p>
             <p>Reels: Premiere Pro 2021+</p>
             <p>Cut Sheet: Premiere Pro 25.6+</p>
+            <p>Podcast Editor: Premiere Pro 25.6+</p>
           </div>
         </div>
         <div className="footer-bottom">

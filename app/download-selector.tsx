@@ -8,6 +8,7 @@ type CutSheetRelease = { version: string; url: string } | null;
 
 const DESKTOP_REPO = "Inside-Success/istv-reel-editor-desktop";
 const PLUGIN_REPO = "Inside-Success/istv-reels-tool-plugin";
+const PODCAST_DOWNLOAD = "https://istv-podcast-editor-plugin.onrender.com/v1/podcast/plugin/public-download";
 const d = (repo: string, f: string) => `https://github.com/${repo}/releases/latest/download/${f}`;
 
 const files = {
@@ -27,12 +28,12 @@ const subscribe = () => () => {};
 const browserPlatform = (): Platform | null => /Windows/i.test(navigator.userAgent) ? "windows" : /Mac/i.test(navigator.userAgent) ? "mac" : null;
 const serverPlatform = (): Platform | null => null;
 
-function FileRow({ label, note, url, mine }: { label: string; note: string; url: string; mine: boolean }) {
+function FileRow({ label, note, url, mine, fileName }: { label: string; note: string; url: string; mine: boolean; fileName?: string }) {
   return (
     <a className={mine ? "file-row mine" : "file-row"} href={url} download>
       <span className="file-text">
         <strong>{label}{mine && <em>Your computer</em>}</strong>
-        <small>{note} · {url.split("/").at(-1)}</small>
+        <small>{note} · {fileName || url.split("/").at(-1)}</small>
       </span>
       <span className="file-go" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -109,6 +110,22 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
           <li>Unzip and open the included <code>.ccx</code> file.</li>
           <li>Find it under Window, UXP Plugins, ISTV Documentary Cut Sheet.</li>
           <li>Voice-over needs a team token from your admin. Later updates install from Check Update in the panel.</li>
+        </ol>
+      </article>
+
+      <article className={cls("podcast")} id="dl-podcast" aria-labelledby="dl-podcast-h">
+        <header className="dl-head">
+          <h3 id="dl-podcast-h">Podcast Editor</h3>
+          <span className="chip">Premiere Pro 25.6+</span>
+        </header>
+        <p className="dl-sum">Build a speaker-led podcast edit inside Premiere Pro. One panel for Mac and Windows.</p>
+        <div className="file-list">
+          <FileRow label="Windows and Mac" note="Creative Cloud panel" fileName="ISTV-Podcast-Editor.ccx" url={PODCAST_DOWNLOAD} mine={false} />
+        </div>
+        <ol className="dl-notes steps">
+          <li>Download and open the <code>.ccx</code> file in Creative Cloud Desktop.</li>
+          <li>Restart Premiere and open Window, UXP Plugins, ISTV Podcast Editor.</li>
+          <li>Enter the team token from your admin under Settings, Transcription. Future updates install from the panel.</li>
         </ol>
       </article>
     </div>
