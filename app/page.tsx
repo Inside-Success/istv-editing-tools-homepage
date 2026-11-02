@@ -124,7 +124,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="pod pod-a"><Icon name="reel" /><span><strong>9:16 reel</strong>Captions placed</span></div>
-          <div className="pod pod-b"><Icon name="doc" /><span><strong>Cut sheet</strong>4 cameras synced</span></div>
+          <div className="pod pod-b"><Icon name="doc" /><span><strong>AI Episode Editor</strong>4 cameras synced</span></div>
           <div className="pedestal" aria-hidden="true" />
         </div>
 
@@ -162,7 +162,7 @@ export default async function Home() {
             <h2>Compatibility</h2>
             <p>Desktop: macOS &amp; Windows</p>
             <p>Reels: Premiere Pro 2021+</p>
-            <p>Cut Sheet: Premiere Pro 25.6+</p>
+            <p>AI Episode Editor: Premiere Pro 25.6+</p>
             <p>Podcast Editor: Premiere Pro 25.6+</p>
           </div>
         </div>
