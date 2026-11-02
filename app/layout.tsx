@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Editor tools for Premiere Pro: find reel moments, build vertical reels, or turn a documentary cut sheet into a multicam assembly with voice-over. Windows and macOS.",
   openGraph: {
     title: "ISTV Editor Tools",
-    description: "Reels desktop, Reels for Premiere, and Documentary Cut Sheet for Premiere Pro.",
+    description: "Reels desktop, Reels for Premiere, and AI Episode Editor for Premiere Pro.",
     images: ["/hero-ai-editor.png"],
   },
   icons: {

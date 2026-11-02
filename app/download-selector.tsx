@@ -83,19 +83,19 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
 
       <article className={cls(" dl-dark")} id="dl-cutsheet" aria-labelledby="dl-cutsheet-h">
         <header className="dl-head">
-          <h3 id="dl-cutsheet-h">Documentary Cut Sheet</h3>
+          <h3 id="dl-cutsheet-h">AI Episode Editor</h3>
           <span className="chip chip-glow">{cutSheetRelease ? `Beta v${cutSheetRelease.version}` : "Beta"}</span>
         </header>
         <p className="dl-sum">A separate Premiere plugin, not the Reels panel. One ZIP for Windows and Mac.</p>
         <div className="file-list">
           {cutSheetRelease
             ? <FileRow label="Windows and Mac" note="Premiere Pro 25.6+" url={cutSheetRelease.url} mine={false} />
-            : <p className="file-empty" role="status">The Cut Sheet download is not published yet. Check back soon, or ask your admin for the beta build.</p>}
+            : <p className="file-empty" role="status">The AI Episode Editor download is not published yet. Check back soon, or ask your admin for the beta build.</p>}
         </div>
         <ol className="dl-notes steps">
           <li>Needs Premiere Pro 25.6+ and Creative Cloud Desktop.</li>
           <li>Unzip and open the included <code>.ccx</code> file.</li>
-          <li>Find it under Window, UXP Plugins, ISTV Documentary Cut Sheet.</li>
+          <li>Find it under Window, UXP Plugins, ISTV AI Episode Editor.</li>
           <li>Voice-over needs a team token from your admin. Later updates install from Check Update in the panel.</li>
         </ol>
       </article>
