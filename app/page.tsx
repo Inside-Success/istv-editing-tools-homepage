@@ -1,5 +1,4 @@
 import Image from "next/image";
-import DownloadLink from "./download-link";
 import DownloadSelector from "./download-selector";
 
 const PLUGIN_REPO = "Inside-Success/istv-reels-tool-plugin";
@@ -64,40 +63,11 @@ function Icon({ name }: { name: string }) {
       {name === "plug" && <><path d="M9 3v5m6-5v5M6 8h12v3a6 6 0 0 1-12 0V8Zm6 9v4" {...p} /></>}
       {name === "play" && <><circle cx="12" cy="12" r="9" {...p} /><path d="m10 8.5 5 3.5-5 3.5v-7Z" {...p} /></>}
       {name === "reel" && <><rect x="7" y="2.5" width="10" height="19" rx="2.5" {...p} /><path d="M10.5 9.5v5l4-2.5-4-2.5Z" {...p} /></>}
-      {name === "desk" && <><rect x="2.5" y="4" width="19" height="12.5" rx="2" {...p} /><path d="M8 20.5h8M12 16.5v4" {...p} /></>}
       {name === "doc" && <><rect x="3" y="5" width="18" height="14" rx="2" {...p} /><path d="M3 9h18M7 5v4m5-4v4m5-4v4" {...p} /></>}
-      {name === "podcast" && <><circle cx="8" cy="9" r="3" {...p} /><circle cx="16" cy="9" r="3" {...p} /><path d="M3 20v-2a5 5 0 0 1 10 0v2m-1 0v-2a5 5 0 0 1 9 0v2" {...p} /></>}
       {name === "spark" && <path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7Z" {...p} />}
     </svg>
   );
 }
-
-const tools = [
-  {
-    id: "desktop", icon: "desk", name: "Reels desktop app", runs: "Mac and Windows",
-    body: "Transcribe footage, find the strongest short-form moments, and export a plan before you open an edit.",
-    points: ["Review footage fast", "Runs on its own, outside Premiere"],
-    cta: "Get the desktop app",
-  },
-  {
-    id: "premiere", icon: "reel", name: "Reels for Premiere", runs: "Premiere Pro 2021+",
-    body: "Build vertical reel sequences with cuts, reframing and captions placed right in your project.",
-    points: ["Made for social video", "Every cut stays editable"],
-    cta: "Get the Premiere panel",
-  },
-  {
-    id: "cutsheet", icon: "doc", name: "Documentary Cut Sheet", runs: "Premiere Pro 25.6+", beta: true,
-    body: "Import the documentary team's XLSX, line it up with synced footage, and build a multicam assembly with ElevenLabs voice-over in story order.",
-    points: ["Long-form documentary edits", "Keeps every camera angle", "Updates from inside the panel"],
-    cta: "Get Cut Sheet",
-  },
-  {
-    id: "podcast", icon: "podcast", name: "Podcast Editor", runs: "Premiere Pro 25.6+",
-    body: "Turn a synced, two-camera podcast into a speaker-led edit, trailer and episode description.",
-    points: ["Switches cameras by speaker", "Team token setup on first launch", "Updates from inside the panel"],
-    cta: "Get Podcast Editor",
-  },
-] as const;
 
 export default async function Home() {
   const [pluginVersion, cutSheetRelease] = await Promise.all([latestPluginVersion(), latestCutSheetRelease()]);
@@ -112,7 +82,6 @@ export default async function Home() {
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
           <a href="#top" aria-current="page">Home</a>
-          <a href="#tools">Tools</a>
           <a href="#download">Download</a>
           <a href="https://insidesuccesstv.com/" target="_blank" rel="noreferrer">Inside Success TV</a>
         </nav>
@@ -128,7 +97,6 @@ export default async function Home() {
           </p>
           <div className="hero-actions load" style={{ ["--d" as string]: "200ms" }}>
             <a className="btn-dark" href="#download"><span className="btn-icon"><Icon name="spark" /></span>Download a tool</a>
-            <a className="btn-glass" href="#tools">See what each one does</a>
           </div>
         </div>
 
@@ -171,28 +139,6 @@ export default async function Home() {
         </ol>
       </section>
 
-      <section className="tools" id="tools" aria-labelledby="tools-heading">
-        <div className="section-head">
-          <h2 id="tools-heading">One toolkit, four clear jobs</h2>
-          <p>Choose by the edit you are making today. Each tool installs on its own.</p>
-        </div>
-        <div className="tool-grid">
-          {tools.map((t) => (
-            <article key={t.id} className={`glass tool${t.id === "cutsheet" ? " tool-dark" : ""}`} id={t.id === "cutsheet" ? "documentary" : undefined}>
-              <div className="tool-top">
-                <span className="tool-icon"><Icon name={t.icon} /></span>
-                <span className="chip">{t.runs}</span>
-                {"beta" in t && <span className="chip chip-glow">Beta</span>}
-              </div>
-              <h3>{t.name}</h3>
-              <p>{t.body}</p>
-              <ul>{t.points.map((x) => <li key={x}>{x}</li>)}</ul>
-              <DownloadLink product={t.id} className="tool-link">{t.cta}</DownloadLink>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="download" id="download" aria-labelledby="download-heading">
         <div className="section-head">
           <h2 id="download-heading">Downloads</h2>
@@ -209,7 +155,6 @@ export default async function Home() {
           </div>
           <nav className="footer-group" aria-label="Footer navigation">
             <h2>Explore</h2>
-            <a href="#tools">Tools</a>
             <a href="#download">Downloads</a>
             <a href="#top">Back to top</a>
           </nav>
