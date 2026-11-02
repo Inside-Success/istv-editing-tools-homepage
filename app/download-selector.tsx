@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
-import { PICK_EVENT, type Product } from "./download-link";
+import { useSyncExternalStore } from "react";
 
 type Platform = "windows" | "mac";
 type CutSheetRelease = { version: string; url: string } | null;
@@ -46,24 +45,12 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
   pluginVersion: string | null;
   cutSheetRelease: CutSheetRelease;
 }) {
-  const [picked, setPicked] = useState<Product | null>(null);
   const platform = useSyncExternalStore(subscribe, browserPlatform, serverPlatform);
-
-  // Tool cards above pick a product; its download card glows when you land here.
-  useEffect(() => {
-    const pick = (event: Event) => {
-      setPicked(null);
-      requestAnimationFrame(() => setPicked((event as CustomEvent<Product>).detail));
-    };
-    window.addEventListener(PICK_EVENT, pick);
-    return () => window.removeEventListener(PICK_EVENT, pick);
-  }, []);
-
-  const cls = (p: Product, extra = "") => `glass dl-card${extra}${picked === p ? " picked" : ""}`;
+  const cls = (extra = "") => `glass dl-card${extra}`;
 
   return (
     <div className="dl-grid">
-      <article className={cls("desktop")} id="dl-desktop" aria-labelledby="dl-desktop-h">
+      <article className={cls()} id="dl-desktop" aria-labelledby="dl-desktop-h">
         <header className="dl-head">
           <h3 id="dl-desktop-h">Reels desktop app</h3>
           <span className="chip">Standalone</span>
@@ -78,7 +65,7 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
         </ul>
       </article>
 
-      <article className={cls("premiere")} id="dl-premiere" aria-labelledby="dl-premiere-h">
+      <article className={cls()} id="dl-premiere" aria-labelledby="dl-premiere-h">
         <header className="dl-head">
           <h3 id="dl-premiere-h">Reels for Premiere</h3>
           <span className="chip">{pluginVersion ? `v${pluginVersion}` : "Premiere 2021+"}</span>
@@ -94,7 +81,7 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
         </ol>
       </article>
 
-      <article className={cls("cutsheet", " dl-dark")} id="dl-cutsheet" aria-labelledby="dl-cutsheet-h">
+      <article className={cls(" dl-dark")} id="dl-cutsheet" aria-labelledby="dl-cutsheet-h">
         <header className="dl-head">
           <h3 id="dl-cutsheet-h">Documentary Cut Sheet</h3>
           <span className="chip chip-glow">{cutSheetRelease ? `Beta v${cutSheetRelease.version}` : "Beta"}</span>
@@ -113,7 +100,7 @@ export default function DownloadSelector({ pluginVersion, cutSheetRelease }: {
         </ol>
       </article>
 
-      <article className={cls("podcast")} id="dl-podcast" aria-labelledby="dl-podcast-h">
+      <article className={cls()} id="dl-podcast" aria-labelledby="dl-podcast-h">
         <header className="dl-head">
           <h3 id="dl-podcast-h">Podcast Editor</h3>
           <span className="chip">Premiere Pro 25.6+</span>
